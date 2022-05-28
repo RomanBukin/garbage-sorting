@@ -14,7 +14,7 @@ namespace Tests.EditMode
             Debug.Log("Debug log");
             Console.WriteLine("Console write line");
             
-            Assert.False(true);
+            Assert.False(false);
         }
     }
 }
