@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print env
-        run: echo ${{ env.UNITY_LICENSE }}
+        run: echo "${{ env.UNITY_LICENSE }}"
       
       - name: Fail - No license
         if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
