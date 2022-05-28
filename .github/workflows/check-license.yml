@@ -5,19 +5,16 @@ on:
   workflow_dispatch: {}
   
 env:
-  TEST_SECRET: ${{ secrets.TEST_SECRET }}
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
   check-license:
     name: Check for Unity license
     runs-on: ubuntu-latest
     steps:
-      - name: Print env
-        run: echo "${{ env.TEST_SECRET }}"
-      
       - name: Fail - No license
-        if: ${{ !startsWith(env.TEST_SECRET, '<') }}
+        if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
         run: exit 1      
       
-      #- name: Unity - Activate
-      #  uses: game-ci/unity-activate@v2.0.0
+      - name: Unity - Activate
+        uses: game-ci/unity-activate@v2.0.0
