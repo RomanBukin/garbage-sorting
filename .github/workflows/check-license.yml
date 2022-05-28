@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print env
-        run: echo env.TEST_SECRET
+        run: echo "${{ env.TEST_SECRET }}"
       
       - name: Fail - No license
         if: ${{ !startsWith(env.TEST_SECRET, '<') }}
