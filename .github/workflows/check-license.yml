@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Fail - No license
-        if: ${{ !startsWith(env.UNIT_LICENSE, '<') }}
+        if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
         run: exit 1      
       
       - name: Unity - Activate
