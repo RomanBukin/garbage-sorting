@@ -1,0 +1,40 @@
+name: Run Tests
+on:    
+  workflow_dispatch: {}
+  
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  
+
+jobs:
+  run-tests:
+    name: Test all modes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+        
+      - name: Cache
+        uses: actions/cache@v3.0.2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+        
+      - name: Unity - Test runner
+        uses: game-ci/unity-test-runner@v2.0.2
+          
+      - name: Unity - Builder
+        uses: game-ci/unity-builder@v2.0.4
+        with:
+          targetPlatform: StandaloneWindows64
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build
