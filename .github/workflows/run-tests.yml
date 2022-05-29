@@ -18,14 +18,8 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-            
-      - name: Show files 1
-        run: ls /var/lib/docker -R
         
       - name: Unity - Test runner
         uses: game-ci/unity-test-runner@v2.0.2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-      - name: Show files 2
-        run: ls /var/lib/docker -R
