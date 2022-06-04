@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Services
 {
-    [RequireComponent(typeof(AudioListener))]
     public class AudioService : MonoBehaviour
     {
         [SerializeField] private AudioSource musicAudioSource;
@@ -12,8 +11,6 @@ namespace Services
         [SerializeField] private AudioClip menuMusic;
         [SerializeField] private AudioClip[] gameplayMusic;
         [SerializeField] private AudioClip[] sounds;
-
-        // public bool IsPlaying => _audioSource.isPlaying;
 
         public void PlayMenuMusic()
         {
