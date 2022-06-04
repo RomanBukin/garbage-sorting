@@ -661,11 +661,14 @@ PlayerSettings:
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
-    Android: 0
+    Android: 1
+    Standalone: 0
   il2cppCompilerConfiguration:
-    Android: 1
+    Android: 2
+    Standalone: 2
   managedStrippingLevel:
-    Android: 1
+    Android: 3
+    Standalone: 3
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
