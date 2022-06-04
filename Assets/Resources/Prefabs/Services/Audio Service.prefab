@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5966948747874005167}
   - component: {fileID: 5966948747874005154}
+  - component: {fileID: 2006781093381169672}
   m_Layer: 0
   m_Name: Audio Service
   m_TagString: Untagged
@@ -61,6 +62,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5f2b2458405dc714aa7c8d5900e2da0e, type: 3}
   - {fileID: 8300000, guid: dfa48cac673f6374a851b42cfe6f7bc0, type: 3}
   - {fileID: 8300000, guid: 2b3c17239d5e0d343a84977ae4ae6447, type: 3}
+--- !u!81 &2006781093381169672
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5966948747874005152}
+  m_Enabled: 1
 --- !u!1 &5966948748226804830
 GameObject:
   m_ObjectHideFlags: 0

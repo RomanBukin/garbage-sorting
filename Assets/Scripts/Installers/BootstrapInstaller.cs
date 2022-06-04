@@ -1,11 +1,12 @@
 using DG.Tweening;
 using Services;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Installers
 {
-    public class PersistentInstaller : MonoInstaller, IInitializable
+    public class BootstrapInstaller : MonoInstaller, IInitializable
     {
         [SerializeField] private GameObject audioService;
         [SerializeField] private GameObject settingsService;
@@ -18,6 +19,7 @@ namespace Installers
             BindSettingsService();
             BindRecordsService();
             BindSceneSwitcher();
+            StartInit();
         }
 
         private void BindAudioService()
@@ -58,8 +60,18 @@ namespace Installers
 
         public void Initialize()
         {
+            Container.InstantiateComponentOnNewGameObject<StandaloneInputModule>("Event System");
+            
             DOTween.Init();
             Application.targetFrameRate = 60;
+        }
+
+        private void StartInit()
+        {
+            Container
+                .Bind<IInitializable>()
+                .FromInstance(this)
+                .AsSingle();
         }
     }
 }
