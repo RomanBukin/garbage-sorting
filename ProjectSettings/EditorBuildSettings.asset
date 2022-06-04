@@ -11,12 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Persistence.unity
     guid: df69ef3d468e6e646a54bc05231fc5b6
-  - enabled: 1
-    path: Assets/Scenes/Scene1.unity
-    guid: 971de1a8bf7c75d43a933afdc007ec72
-  - enabled: 1
-    path: Assets/Scenes/Scene2.unity
-    guid: 6ac76aad2cd349a4c9a6f7e4ded4967d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 143f46b8ab4487147b8d34df0bf360b2, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 73ffbee9ef670db42bc4d03d2eba94b1, type: 2}

@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987279152787617800, guid: afa6d4e1d6ec9e945a4540a11c457954, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 987279152787617800, guid: afa6d4e1d6ec9e945a4540a11c457954, type: 3}
       propertyPath: autoloadSceneIndex

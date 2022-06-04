@@ -305,6 +305,7 @@ MonoBehaviour:
   audioService: {fileID: 5966948747874005152, guid: e7ae6c4e6c140ab46a940563fe51b2d7, type: 3}
   settingsService: {fileID: 152272014939564384, guid: 20675e9595b73d949b89741d03b612b0, type: 3}
   recordsService: {fileID: 3659101510721548752, guid: 76e5bf91465584143a92d5bcb2674251, type: 3}
+  sceneSwitcher: {fileID: 2188590630983115017, guid: d4e9d704dc442c747af893e143bcfe47, type: 3}
 --- !u!114 &1362970059
 MonoBehaviour:
   m_ObjectHideFlags: 0

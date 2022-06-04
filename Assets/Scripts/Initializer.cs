@@ -18,6 +18,24 @@ public class Initializer : MonoBehaviour
         if (autoload && gameObject.scene.buildIndex != autoloadSceneIndex)
         {
             SceneManager.LoadScene(autoloadSceneIndex, LoadSceneMode.Additive);
+            SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void SceneManagerOnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.Equals(PersistenceScene))
+        {
+            return;
+        }
+        
+        SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
+        
+        SceneManager.SetActiveScene(scene);
+        SceneManager.UnloadSceneAsync(gameObject.scene);
     }
 }
