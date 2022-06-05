@@ -1,3 +1,4 @@
+using System;
 using Services;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,28 +14,33 @@ namespace Controllers
         public Button creditsButton;
         public Button quitButton;
         public Button closePopupButton;
-        
-        private MainMenuAnimation _animation;
-        private SceneSwitcher _sceneSwitcher;
+
         private AudioService _audioService;
+        private SettingsService _settingsService;
+        private RecordsService _recordsService;
+        private SceneSwitcher _sceneSwitcher;
+        private MainMenuAnimation _animation;
 
         [Inject]
         public void Construct(
             AudioService audioService,
+            SettingsService settingsService,
+            RecordsService recordsService,
             SceneSwitcher sceneSwitcher,
-            MainMenuAnimation menuAnimation
-            )
+            MainMenuAnimation menuAnimation)
         {
             _audioService = audioService;
+            _settingsService = settingsService;
+            _recordsService = recordsService;
             _sceneSwitcher = sceneSwitcher;
             _animation = menuAnimation;
-            
+
             _sceneSwitcher.FadeFinished += FadeFinished;
         }
 
         private void Start()
         {
-            // _audioService.PlayMenuMusic();
+            soundToggleButton.isOn = _settingsService.SoundEnabled;
             
             playButton.onClick.AddListener(OnClickPlayButton);
             soundToggleButton.onValueChanged.AddListener(OnChangedSoundToggle);
@@ -47,7 +53,7 @@ namespace Controllers
         private void OnDestroy()
         {
             _sceneSwitcher.FadeFinished -= FadeFinished;
-            
+
             playButton.onClick.RemoveListener(OnClickPlayButton);
             soundToggleButton.onValueChanged.RemoveListener(OnChangedSoundToggle);
             recordsButton.onClick.RemoveListener(OnClickRecordsButton);
@@ -65,14 +71,16 @@ namespace Controllers
         private void OnChangedSoundToggle(bool value)
         {
             print("OnChangedSoundToggle");
-            // if (_audioService.IsPlaying)
-            // {
-                // _audioService.Stop();
-            // }
-            // else
-            // {
-                // _audioService.PlayMenuMusic();
-            // }
+            if (_settingsService.SoundEnabled)
+            {
+                _audioService.StopMusic();
+                _settingsService.SoundEnabled = false;
+            }
+            else
+            {
+                _audioService.PlayMenuMusic();
+                _settingsService.SoundEnabled = true;
+            }
         }
 
         private void OnClickCreditsButton()
@@ -93,7 +101,7 @@ namespace Controllers
             _sceneSwitcher.PrepareScene("Gameplay Scene");
             _animation.SelectPlay();
             _sceneSwitcher.SwitchToPreparedScene(0.5f);
-        } 
+        }
 
         private void FadeFinished(object sender, FadeEventArgs e)
         {
@@ -102,7 +110,5 @@ namespace Controllers
                 _animation.ShowIcons();
             }
         }
-
-        
     }
 }

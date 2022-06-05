@@ -8,10 +8,10 @@ namespace Installers
 {
     public class BootstrapInstaller : MonoInstaller, IInitializable
     {
-        [SerializeField] private GameObject audioService;
-        [SerializeField] private GameObject settingsService;
-        [SerializeField] private GameObject recordsService;
-        [SerializeField] private GameObject sceneSwitcher;
+        [SerializeField] private GameObject audioServicePrefab;
+        [SerializeField] private GameObject settingsServicePrefab;
+        [SerializeField] private GameObject recordsServicePrefab;
+        [SerializeField] private GameObject sceneSwitcherPrefab;
 
         public override void InstallBindings()
         {
@@ -26,7 +26,7 @@ namespace Installers
         {
             Container
                 .Bind<AudioService>()
-                .FromComponentInNewPrefab(audioService)
+                .FromComponentInNewPrefab(audioServicePrefab)
                 .AsSingle()
                 .NonLazy();
         }
@@ -35,7 +35,7 @@ namespace Installers
         {
             Container
                 .Bind<SettingsService>()
-                .FromComponentInNewPrefab(settingsService)
+                .FromComponentInNewPrefab(settingsServicePrefab)
                 .AsSingle()
                 .NonLazy();
         }
@@ -44,7 +44,7 @@ namespace Installers
         {
             Container
                 .Bind<RecordsService>()
-                .FromComponentInNewPrefab(recordsService)
+                .FromComponentInNewPrefab(recordsServicePrefab)
                 .AsSingle()
                 .NonLazy();
         }
@@ -53,7 +53,7 @@ namespace Installers
         {
             Container
                 .Bind<SceneSwitcher>()
-                .FromComponentInNewPrefab(sceneSwitcher)
+                .FromComponentInNewPrefab(sceneSwitcherPrefab)
                 .AsSingle()
                 .NonLazy();
         }
@@ -61,9 +61,17 @@ namespace Installers
         public void Initialize()
         {
             Container.InstantiateComponentOnNewGameObject<StandaloneInputModule>("Event System");
-            
+
             DOTween.Init();
             Application.targetFrameRate = 60;
+
+            var audioService = Container.Resolve<AudioService>();
+            var settingsService = Container.Resolve<SettingsService>();
+
+            if (settingsService.SoundEnabled)
+            {
+                audioService.PlayMenuMusic();
+            }
         }
 
         private void StartInit()
