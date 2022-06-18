@@ -7,6 +7,7 @@ namespace Game
     {
         public float MinSpeed => 1f;
         public float MaxSpeed => 2f;
+        public int Difficulty => _difficulty;
 
         public TankEnableChangedEvent TankEnableChanged;
         public MaxTankChangedEvent MaxTankChanged;
@@ -15,6 +16,7 @@ namespace Game
         private readonly float[] _difficultyTime = new float[6];
 
         private int _maxTank = -1;
+        private int _difficulty = 0;
 
         public GameMode()
         {
@@ -26,7 +28,8 @@ namespace Game
 
         public void SetDifficulty(int index)
         {
-            Debug.Log($"diff: {index}");
+            Debug.Log($"Difficulty: {index}");
+            _difficulty = index;
             var maxTank = index < 6 ? -1 : index;
             
             for (int i = 0; i < _tanksEnabled.Length; i++)
@@ -41,6 +44,21 @@ namespace Game
                 if (isEnabled && i > maxTank)
                 {
                     maxTank = i;
+                }
+            }
+
+            // Disable 3 random tanks.
+            if (index == 6)
+            {
+                ISet<int> numbers = new HashSet<int>();
+                while (numbers.Count < 3)
+                {
+                    numbers.Add(Random.Range(0, 6));
+                }
+                
+                foreach (var number in numbers)
+                {
+                    _tanksEnabled[number] = false;
                 }
             }
 
