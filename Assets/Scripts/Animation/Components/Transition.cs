@@ -14,7 +14,7 @@ namespace Animation
         private Vector3 _startPosition;
         private Vector3 _endPosition;
 
-        private void Start()
+        private void Awake()
         {
             _startPosition = transform.localPosition;
             _endPosition = _startPosition + offset;

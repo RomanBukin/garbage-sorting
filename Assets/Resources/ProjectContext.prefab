@@ -77,3 +77,4 @@ MonoBehaviour:
   settingsServicePrefab: {fileID: 152272014939564384, guid: 20675e9595b73d949b89741d03b612b0, type: 3}
   recordsServicePrefab: {fileID: 3659101510721548752, guid: 76e5bf91465584143a92d5bcb2674251, type: 3}
   sceneSwitcherPrefab: {fileID: 2188590630983115017, guid: d4e9d704dc442c747af893e143bcfe47, type: 3}
+  adServicePrefab: {fileID: 2108712328803229502, guid: be2fa8de8e51f4043b9ac6a9364f3d59, type: 3}

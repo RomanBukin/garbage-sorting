@@ -12,6 +12,7 @@ namespace Installers
         [SerializeField] private GameObject settingsServicePrefab;
         [SerializeField] private GameObject recordsServicePrefab;
         [SerializeField] private GameObject sceneSwitcherPrefab;
+        [SerializeField] private GameObject adServicePrefab;
 
         public override void InstallBindings()
         {
@@ -19,6 +20,8 @@ namespace Installers
             BindSettingsService();
             BindRecordsService();
             BindSceneSwitcher();
+            BindAdService();
+            
             StartInit();
         }
 
@@ -57,12 +60,22 @@ namespace Installers
                 .AsSingle()
                 .NonLazy();
         }
+        
+        private void BindAdService()
+        {
+            Container
+                .Bind<AdService>()
+                .FromComponentInNewPrefab(adServicePrefab)
+                .AsSingle()
+                .NonLazy();
+        }
 
         public void Initialize()
         {
             Container.InstantiateComponentOnNewGameObject<StandaloneInputModule>("Event System");
 
             DOTween.Init();
+            DOTween.defaultAutoPlay = AutoPlay.AutoPlayTweeners;
             Application.targetFrameRate = 60;
 
             var audioService = Container.Resolve<AudioService>();

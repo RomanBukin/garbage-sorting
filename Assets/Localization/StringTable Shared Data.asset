@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: StringTable
   m_TableCollectionNameGuidString: c05fea5433267a24e9e21af032b3741c
-  m_Entries: []
+  m_Entries:
+  - m_Id: 49818110204022784
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

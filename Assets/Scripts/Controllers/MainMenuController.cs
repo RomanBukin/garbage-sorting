@@ -98,7 +98,7 @@ namespace Controllers
         private void OnClickPlayButton()
         {
             print("OnClickPlayButton");
-            _sceneSwitcher.PrepareScene("Gameplay Scene");
+            _sceneSwitcher.PrepareScene("Game Select Scene");
             _animation.SelectPlay();
             _sceneSwitcher.SwitchToPreparedScene(0.5f);
         }
