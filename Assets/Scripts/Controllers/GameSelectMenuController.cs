@@ -1,9 +1,7 @@
-using System;
 using Game;
 using Services;
 using Unity.Services.Mediation;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -22,6 +20,7 @@ namespace Controllers
 
         private SceneSwitcher _sceneSwitcher;
         private AdService _adService;
+        private CrossSceneContainer _crossSceneContainer;
         private GameMode _gameMode;
 
         private int _currentType;
@@ -32,22 +31,26 @@ namespace Controllers
         private void Construct(
             SceneSwitcher sceneSwitcher,
             AdService adService,
-            GameMode gameMode
+            CrossSceneContainer crossSceneContainer
         )
         {
             _sceneSwitcher = sceneSwitcher;
             _adService = adService;
-            _gameMode = gameMode;
+            _crossSceneContainer = crossSceneContainer;
         }
 
         private void Awake()
         {
+            _gameMode = new GameMode();
+
             SetUpEvents();
         }
 
         private void Start()
         {
             SetLocked(true);
+            
+            _gameMode.SetDifficulty(0);
         }
 
         private void OnDestroy()
@@ -68,7 +71,7 @@ namespace Controllers
 
             _gameMode.TankEnableChanged += TankEnableChanged;
             _gameMode.MaxTankChanged += MaxTankChanged;
-            
+
             _adService.OnUserRewarded += OnUserRewarded;
         }
 
@@ -106,6 +109,7 @@ namespace Controllers
                     return;
                 }
             }
+
             _gameMode.SetDifficulty(index);
         }
 
@@ -117,6 +121,7 @@ namespace Controllers
         private void OnStartClicked()
         {
             print($"Start, {_gameMode.GetTankTypes().Length}");
+            _crossSceneContainer.Put(_gameMode);
             _sceneSwitcher.SwitchScene("Gameplay Scene");
         }
 
@@ -141,12 +146,12 @@ namespace Controllers
         private void SetLocked(bool value)
         {
             _locked = value;
-            
+
             foreach (var image in lockedImages)
             {
                 image.SetActive(value);
             }
-            
+
             foreach (var image in unlockedImages)
             {
                 image.SetActive(!value);

@@ -21,6 +21,7 @@ namespace Installers
             BindRecordsService();
             BindSceneSwitcher();
             BindAdService();
+            BindCrossSceneContainer();
             
             StartInit();
         }
@@ -60,7 +61,7 @@ namespace Installers
                 .AsSingle()
                 .NonLazy();
         }
-        
+
         private void BindAdService()
         {
             Container
@@ -68,6 +69,14 @@ namespace Installers
                 .FromComponentInNewPrefab(adServicePrefab)
                 .AsSingle()
                 .NonLazy();
+        }
+
+        private void BindCrossSceneContainer()
+        {
+            Container
+                .Bind<CrossSceneContainer>()
+                .AsSingle()
+                .Lazy();
         }
 
         public void Initialize()

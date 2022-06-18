@@ -1,4 +1,3 @@
-using Game;
 using Zenject;
 
 namespace Installers
@@ -7,9 +6,6 @@ namespace Installers
     {
         public override void InstallBindings()
         {
-            Container
-                .Bind<GameMode>()
-                .AsSingle();
         }
     }
 }
