@@ -11,6 +11,7 @@ TagManager:
   - Green
   - Black
   - Red
+  - Floor
   layers:
   - Default
   - TransparentFX

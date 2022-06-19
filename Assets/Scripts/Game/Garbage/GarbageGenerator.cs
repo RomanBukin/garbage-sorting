@@ -6,10 +6,9 @@ namespace Game.Garbage
 {
     public class GarbageGenerator
     {
-        public bool Started { get; set; }
-
         private GameMode _gameMode;
         private GarbageFactory _garbageFactory;
+        private bool _started;
 
         [Inject]
         private void Construct(GarbageFactory garbageFactory)
@@ -22,16 +21,21 @@ namespace Game.Garbage
             _gameMode = gameMode;
         }
 
+        public void Stop()
+        {
+            _started = false;
+        }
+
         public IEnumerator GeneratorTask()
         {
-            Started = true;
+            _started = true;
             
             int[] types = _gameMode.GetTankTypes();
             var difficultyTime = _gameMode.GetDifficultyTime(types.Length);
             float delay;
             float timeElapsed = 0f;
 
-            while (Started)
+            while (_started)
             {
                 _garbageFactory.Create(types);
                 delay = Mathf.Lerp(
@@ -60,7 +64,7 @@ namespace Game.Garbage
             delay = _gameMode.MinDelay;
             var delayDiff = _gameMode.MaxLevelDelayDecrease;
             
-            while (Started)
+            while (_started)
             {
                 _garbageFactory.Create(types);
                 yield return new WaitForSeconds(delay);

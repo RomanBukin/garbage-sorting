@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Garbage;
 using UnityEngine;
@@ -7,9 +8,14 @@ namespace Game
 {
     public class Gameplay
     {
+        public const int MistakeCount = 3;
+        public event EventHandler GameStarted;
+        public event EventHandler GameOver;
+
         public GameMode GameMode { get; private set; }
         public GameState GameState { get; private set; }
         public GarbageGenerator GarbageGenerator { get; private set; }
+
 
         [Inject]
         private void Construct(GarbageGenerator garbageGenerator)
@@ -24,8 +30,8 @@ namespace Game
             GameState = new GameState();
             GarbageGenerator.SetGameMode(gameMode);
             
-            // TODO Start timer, etc.
-            
+            OnGameStarted();
+
             return GarbageGenerator.GeneratorTask();
         }
 
@@ -39,12 +45,34 @@ namespace Game
         {
             Debug.Log("Incorrect");
             GameState.IncrementIncorrect();
+            CheckGameOver();
         }
 
         public void HandleMissed()
         {
             Debug.Log("Missed");
             GameState.IncrementMissed();
+            CheckGameOver();
+        }
+
+        private void OnGameStarted()
+        {
+            GameStarted?.Invoke(this, EventArgs.Empty);
+        }
+        
+        private void OnGameOver()
+        {
+            GameOver?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckGameOver()
+        {
+            if (GameState.Incorrect + GameState.Missed == MistakeCount)
+            {
+                GameState.Stop();
+                GarbageGenerator.Stop();
+                OnGameOver();
+            }
         }
     }
 }
