@@ -5,24 +5,25 @@ namespace Game
 {
     public class GameMode
     {
-        public float MinSpeed => 1f;
-        public float MaxSpeed => 2f;
-        public int Difficulty => _difficulty;
+        public float MinDelay => 1f;
+        public float MaxDelay => 2f;
+        public float MaxLevelDelayDecrease => 0.001f;
+        public bool IsMaxLevel { get; private set; }
 
         public TankEnableChangedEvent TankEnableChanged;
         public MaxTankChangedEvent MaxTankChanged;
 
         private readonly bool[] _tanksEnabled = new bool[6];
-        private readonly float[] _difficultyTime = new float[6];
+        private readonly float[] _difficultyTime = new float[7];
 
         private int _maxTank = -1;
-        private int _difficulty = 0;
+        private int _difficulty;
 
         public GameMode()
         {
             for (int i = 0; i < _difficultyTime.Length; i++)
             {
-                _difficultyTime[i] = (i + 1) * 60f / 6f;
+                _difficultyTime[i] = (i + 1) * 60f;
             }
         }
 
@@ -37,8 +38,7 @@ namespace Game
                 bool isEnabled = i <= index;
                 if (_tanksEnabled[i] != isEnabled)
                 {
-                    _tanksEnabled[i] = isEnabled;
-                    OnTankEnableChanged(i, isEnabled);
+                    SetTankEnabled(i, isEnabled);
                 }
 
                 if (isEnabled && i > maxTank)
@@ -67,20 +67,40 @@ namespace Game
                 _maxTank = maxTank;
                 OnMaxTankChanged(maxTank);
             }
+
+            IsMaxLevel = index == 5;
         }
 
-        public void SetTankEnabled(int type, bool value)
+        public void LevelUp()
+        {
+            if (_difficulty == 6)
+            {
+                var types = GetTankTypes(false);
+                var typeIndex = Random.Range(0, types.Length);
+                var type = types[typeIndex];
+                
+                SetTankEnabled(type, true);
+
+                IsMaxLevel = types.Length == 1;
+            }
+            else
+            {
+                SetDifficulty(_difficulty + 1);
+            }
+        }
+
+        private void SetTankEnabled(int type, bool value)
         {
             _tanksEnabled[type] = value;
             OnTankEnableChanged(type, value);
         }
 
-        public int[] GetTankTypes()
+        public int[] GetTankTypes(bool value = true)
         {
             var res = new List<int>();
             for (int i = 0; i < _tanksEnabled.Length; i++)
             {
-                if (_tanksEnabled[i])
+                if (_tanksEnabled[i] == value)
                 {
                     res.Add(i);
                 }

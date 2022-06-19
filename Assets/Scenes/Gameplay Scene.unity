@@ -922,7 +922,6 @@ GameObject:
   m_Component:
   - component: {fileID: 760105450}
   - component: {fileID: 760105451}
-  - component: {fileID: 760105452}
   - component: {fileID: 760105449}
   m_Layer: 0
   m_Name: Garbage Generator
@@ -1013,18 +1012,6 @@ MonoBehaviour:
   isReversed: 1
   duration: 1
   ease: 1
---- !u!114 &760105452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760105448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b2f1a6c1ea4201ac07c1d3b320d552, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &791639104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2917,7 +2904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f283409e5442b34090d064cfd591eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   initialTransitions:
   - {fileID: 315498785}
   - {fileID: 1573763195}

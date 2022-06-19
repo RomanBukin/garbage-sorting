@@ -28,7 +28,8 @@ namespace Game.Garbage
 
         public void Create(int[] types)
         {
-            int type = Random.Range(0, types.Length);
+            int typeIndex = Random.Range(0, types.Length);
+            int type = types[typeIndex];
             int index = Random.Range(0, _garbage[type].Length);
             var prefab = _garbage[type][index];
             

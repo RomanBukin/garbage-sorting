@@ -16,6 +16,7 @@ namespace Installers
             
             BindGameplay();
             BindGarbageFactory();
+            BindGarbageGenerator();
         }
 
         private void InitDevelop()
@@ -40,6 +41,13 @@ namespace Installers
                 .Bind<GarbageFactory>()
                 .AsSingle()
                 .WithArguments(spawnPosition.position);
+        }
+
+        private void BindGarbageGenerator()
+        {
+            Container
+                .Bind<GarbageGenerator>()
+                .AsSingle();
         }
     }
 }
