@@ -11,6 +11,7 @@ namespace Game
         public const int MistakeCount = 3;
         public event EventHandler GameStarted;
         public event EventHandler GameOver;
+        public event EventHandler<int> ItemCaught; 
 
         public GameMode GameMode { get; private set; }
         public GameState GameState { get; private set; }
@@ -35,16 +36,18 @@ namespace Game
             return GarbageGenerator.GeneratorTask();
         }
 
-        public void HandleCorrect()
+        public void HandleCorrect(int type)
         {
             Debug.Log("Correct");
             GameState.IncrementCorrect();
+            OnItemCaught(type);
         }
 
-        public void HandleIncorrect()
+        public void HandleIncorrect(int type)
         {
             Debug.Log("Incorrect");
             GameState.IncrementIncorrect();
+            OnItemCaught(type);
             CheckGameOver();
         }
 
@@ -63,6 +66,11 @@ namespace Game
         private void OnGameOver()
         {
             GameOver?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnItemCaught(int type)
+        {
+            ItemCaught?.Invoke(this, type);
         }
 
         private void CheckGameOver()

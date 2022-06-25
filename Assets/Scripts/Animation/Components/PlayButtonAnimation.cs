@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Animation
+namespace Animation.Components
 {
     public class PlayButtonAnimation : FadeAnimation
     { 

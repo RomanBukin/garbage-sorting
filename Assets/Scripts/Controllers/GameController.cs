@@ -1,8 +1,10 @@
 using System;
 using Animation;
 using Game;
+using Services;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Controllers
 {
@@ -13,15 +15,18 @@ namespace Controllers
 
         private Gameplay _gameplay;
         private GameMode _gameMode;
+        private AudioService _audioService;
 
         [Inject]
         public void Construct(
             CrossSceneContainer crossSceneContainer,
-            Gameplay gameplay
+            Gameplay gameplay,
+            AudioService audioService
         )
         {
             _gameplay = gameplay;
             _gameMode = crossSceneContainer.Pop<GameMode>();
+            _audioService = audioService;
         }
 
         private void Awake()
@@ -30,6 +35,33 @@ namespace Controllers
             _gameMode.TankEnableChanged += TankEnableChanged;
             _gameplay.GameStarted += GameplayOnGameStarted;
             _gameplay.GameOver += GameplayOnGameOver;
+            _gameplay.ItemCaught += GameplayOnItemCaught;
+        }
+
+        private void GameplayOnItemCaught(object sender, int e)
+        {
+            _audioService.PlaySound(GetSoundIndex(e));
+        }
+
+        private int GetSoundIndex(int type)
+        {
+            switch (type)
+            {
+                case 0:
+                    return Random.Range(5, 7);
+                case 1:
+                    return 1;
+                case 2:
+                    return 7;
+                case 3:
+                    return 4;
+                case 4:
+                    return 0;
+                case 5:
+                    return Random.Range(2, 4);
+                default:
+                    return 3;
+            }
         }
 
         private void OnDestroy()
@@ -38,6 +70,7 @@ namespace Controllers
             _gameMode.TankEnableChanged -= TankEnableChanged;
             _gameplay.GameStarted -= GameplayOnGameStarted;
             _gameplay.GameOver -= GameplayOnGameOver;
+            _gameplay.ItemCaught -= GameplayOnItemCaught;
         }
 
         void Start()
