@@ -75,7 +75,7 @@ namespace Game
 
         private void CheckGameOver()
         {
-            if (GameState.Incorrect + GameState.Missed == MistakeCount)
+            if (GameState.Incorrect + GameState.Missed == GameMode.MistakeCount)
             {
                 GameState.Stop();
                 GarbageGenerator.Stop();

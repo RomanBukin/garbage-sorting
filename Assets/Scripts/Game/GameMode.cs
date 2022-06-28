@@ -8,6 +8,8 @@ namespace Game
         public float MinDelay => 1f;
         public float MaxDelay => 2f;
         public float MaxLevelDelayDecrease => 0.001f;
+
+        public int MistakeCount => _mistakeCount;
         public bool IsMaxLevel { get; private set; }
 
         public TankEnableChangedEvent TankEnableChanged;
@@ -18,6 +20,7 @@ namespace Game
 
         private int _maxTank = -1;
         private int _difficulty;
+        private int _mistakeCount = 5;
 
         public GameMode()
         {
@@ -31,6 +34,7 @@ namespace Game
         {
             Debug.Log($"Difficulty: {index}");
             _difficulty = index;
+            _mistakeCount = index == 6 ? 1 : 5;
             var maxTank = index < 6 ? -1 : index;
             
             for (int i = 0; i < _tanksEnabled.Length; i++)
