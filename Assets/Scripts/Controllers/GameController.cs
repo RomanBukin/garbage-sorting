@@ -118,10 +118,11 @@ namespace Controllers
             Time.timeScale = 0f;
 
             var state = _gameplay.GameState;
-            var record = state.MakeRecord(_gameplay.GameMode.GameType);
-            var position = _recordsService.AddRecord(record);
+            var type = _gameplay.GameMode.GameType;
+            var record = state.MakeRecord();
+            var position = _recordsService.AddRecord(record, type);
             
-            gameplayUIController.ShowGameOver(record, position);
+            gameplayUIController.ShowGameOver(record, type, position);
             gameplayUIController.StopTimer();
 
             _gameplay.GameState.CorrectChanged -= OnGameStateCorrectChanged;

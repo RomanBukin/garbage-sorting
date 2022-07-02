@@ -2,12 +2,13 @@ using System;
 
 namespace Game
 {
+    [Serializable]
     public class Record
     {
-        public TimeSpan Time;
-        public GameType Type;
-        public int Correct;
-        public int Incorrect;
-        public int Missed;
+        // ReSharper disable once InconsistentNaming
+        public TimeSpan time;
+        public int correct;
+        public int incorrect;
+        public int missed;
     }
 }

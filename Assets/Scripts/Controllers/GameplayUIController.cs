@@ -112,7 +112,7 @@ namespace Controllers
             StartCoroutine(ShowMessageTask(missedMessage));
         }
 
-        public void ShowGameOver(Record record, int position)
+        public void ShowGameOver(Record record, GameType type, int position)
         {
             if (position == 1)
             {
@@ -126,10 +126,10 @@ namespace Controllers
                 placePanel.SetActive(true);
             }
             
-            if (record.Type == GameType.Classic)
+            if (type == GameType.Classic)
             {
-                incorrectText.text = record.Incorrect.ToString();
-                missedText.text = record.Missed.ToString();
+                incorrectText.text = record.incorrect.ToString();
+                missedText.text = record.missed.ToString();
                 incorrectPanel.SetActive(true);
                 missedPanel.SetActive(true);
             }
@@ -140,9 +140,9 @@ namespace Controllers
             }
 
             
-            var format = record.Time.Hours > 0 ? "hh\\:mm\\:ss\\.f" : "mm\\:ss\\.f";
-            timeText.text = record.Time.ToString(format);
-            correctText.text = record.Correct.ToString();
+            var format = record.time.Hours > 0 ? "hh\\:mm\\:ss\\.f" : "mm\\:ss\\.f";
+            timeText.text = record.time.ToString(format);
+            correctText.text = record.correct.ToString();
             
             gameOverPanel.SetActive(true);
         }

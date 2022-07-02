@@ -39,15 +39,14 @@ namespace Game
             OnMissedChanged();
         }
 
-        public Record MakeRecord(GameType type)
+        public Record MakeRecord()
         {
             return new Record
             {
-                Type = type,
-                Time = this.Time,
-                Correct = this.Correct,
-                Incorrect = this.Incorrect,
-                Missed = this.Missed
+                time = Time,
+                correct = Correct,
+                incorrect = Incorrect,
+                missed = Missed
             };
         }
 
