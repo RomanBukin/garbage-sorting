@@ -9,15 +9,16 @@ namespace Game
         public event EventHandler<int> MissedChanged;
 
         public DateTime StartTime { get; } = DateTime.Now;
-
-        private DateTime _endTime;
+        public DateTime EndTime { get; private set; }
+        public TimeSpan Time => EndTime - StartTime;
+        
         public int Correct { get; private set; }
         public int Incorrect { get; private set; }
         public int Missed { get; private set; }
 
         public void Stop()
         {
-            _endTime = DateTime.Now;
+            EndTime = DateTime.Now;
         }
 
         public void IncrementCorrect()
@@ -36,6 +37,18 @@ namespace Game
         {
             Missed++;
             OnMissedChanged();
+        }
+
+        public Record MakeRecord(GameType type)
+        {
+            return new Record
+            {
+                Type = type,
+                Time = this.Time,
+                Correct = this.Correct,
+                Incorrect = this.Incorrect,
+                Missed = this.Missed
+            };
         }
 
         private void OnCorrectChanged()

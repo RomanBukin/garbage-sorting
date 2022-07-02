@@ -8,7 +8,6 @@ namespace Game
 {
     public class Gameplay
     {
-        public const int MistakeCount = 3;
         public event EventHandler GameStarted;
         public event EventHandler GameOver;
         public event EventHandler<int> ItemCaught; 
@@ -16,7 +15,6 @@ namespace Game
         public GameMode GameMode { get; private set; }
         public GameState GameState { get; private set; }
         public GarbageGenerator GarbageGenerator { get; private set; }
-
 
         [Inject]
         private void Construct(GarbageGenerator garbageGenerator)

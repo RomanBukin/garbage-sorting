@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
+using Animation.Components;
+using Game;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Controllers
 {
@@ -13,31 +16,45 @@ namespace Controllers
         [SerializeField] private TextMeshProUGUI correctCountText;
         [SerializeField] private TextMeshProUGUI incorrectCountText;
         [SerializeField] private TextMeshProUGUI missedCountText;
-        [SerializeField] private TextMeshProUGUI correctMessageText;
-        [SerializeField] private TextMeshProUGUI incorrectMessageText;
-        [SerializeField] private TextMeshProUGUI missedMessageText;
-        [SerializeField] private TextMeshProUGUI gameOverText;
+        
+        [SerializeField] private GameObject correctMessage;
+        [SerializeField] private GameObject incorrectMessage;
+        [SerializeField] private GameObject missedMessage;
 
-        // private DateTime _startTime;
+        [SerializeField] private FlashAnimation correctIconFlash;
+        [SerializeField] private FlashAnimation incorrectIconFlash;
+        [SerializeField] private FlashAnimation missedIconFlash;
+        
+        [Header("GameOver window elements")]
+        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject placePanel;
+        [SerializeField] private GameObject placeRecordPanel;
+        [SerializeField] private GameObject incorrectPanel;
+        [SerializeField] private GameObject missedPanel;
+        [SerializeField] private Text placeText; 
+        [SerializeField] private Text timeText; 
+        [SerializeField] private Text correctText; 
+        [SerializeField] private Text incorrectText; 
+        [SerializeField] private Text missedText;
+
         private bool _timerStarted;
             
 
         public void Reset()
         {
-            timerText.text = "00:00";
-            SetCorrectCount(0);
-            SetIncorrectCount(0);
-            SetMissedCount(0);
+            timerText.text = "";
+            correctCountText.text = "0";
+            incorrectCountText.text = "0";
+            missedCountText.text = "0";
 
-            correctMessageText.enabled = false;
-            incorrectMessageText.enabled = false;
-            missedMessageText.enabled = false;
-            gameOverText.enabled = false;
+            correctMessage.SetActive(false);
+            incorrectMessage.SetActive(false);
+            missedMessage.SetActive(false);
+            gameOverPanel.SetActive(false);
         }
 
         public void StartTimer(DateTime startTime)
         {
-            // _startTime = startTime;
             _timerStarted = true;
             StartCoroutine(UpdateTimerTask(startTime));
         }
@@ -65,45 +82,78 @@ namespace Controllers
         public void SetCorrectCount(int value)
         {
             correctCountText.text = value.ToString();
+            correctIconFlash.Play();
         }
 
         public void SetIncorrectCount(int value)
         {
             incorrectCountText.text = value.ToString();
+            incorrectIconFlash.Play();
         }
 
         public void SetMissedCount(int value)
         {
             missedCountText.text = value.ToString();
+            missedIconFlash.Play();
         }
 
         public void ShowCorrect()
         {
-            StartCoroutine(ShowMessageTask(correctMessageText));
+            StartCoroutine(ShowMessageTask(correctMessage));
         }
 
         public void ShowIncorrect()
         {
-            StartCoroutine(ShowMessageTask(incorrectMessageText));
+            StartCoroutine(ShowMessageTask(incorrectMessage));
         }
 
         public void ShowMissed()
         {
-            StartCoroutine(ShowMessageTask(missedMessageText));
+            StartCoroutine(ShowMessageTask(missedMessage));
         }
 
-        public void ShowGameOver()
+        public void ShowGameOver(Record record, int position)
         {
-            gameOverText.enabled = true;
+            if (position == 1)
+            {
+                placeRecordPanel.SetActive(true);
+                placePanel.SetActive(false);
+            }
+            else
+            {
+                placeText.text = position.ToString();
+                placeRecordPanel.SetActive(false);
+                placePanel.SetActive(true);
+            }
+            
+            if (record.Type == GameType.Classic)
+            {
+                incorrectText.text = record.Incorrect.ToString();
+                missedText.text = record.Missed.ToString();
+                incorrectPanel.SetActive(true);
+                missedPanel.SetActive(true);
+            }
+            else
+            {
+                incorrectPanel.SetActive(false);
+                missedPanel.SetActive(false);
+            }
+
+            
+            var format = record.Time.Hours > 0 ? "hh\\:mm\\:ss\\.f" : "mm\\:ss\\.f";
+            timeText.text = record.Time.ToString(format);
+            correctText.text = record.Correct.ToString();
+            
+            gameOverPanel.SetActive(true);
         }
 
-        private IEnumerator ShowMessageTask(Behaviour behaviour)
+        private IEnumerator ShowMessageTask(GameObject go)
         {
-            behaviour.enabled = true;
+            go.SetActive(true);
             yield return new WaitForSeconds(messageTime);
 
             // ReSharper disable once Unity.InefficientPropertyAccess
-            behaviour.enabled = false;
+            go.SetActive(false);
         }
     }
 }

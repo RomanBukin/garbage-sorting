@@ -8,6 +8,8 @@ namespace Game
         public float MinDelay => 1f;
         public float MaxDelay => 2f;
         public float MaxLevelDelayDecrease => 0.001f;
+        public int Difficulty => _difficulty;
+        public GameType GameType => _difficulty == 6 ? GameType.FirstMiss : GameType.Classic;
 
         public int MistakeCount => _mistakeCount;
         public bool IsMaxLevel { get; private set; }

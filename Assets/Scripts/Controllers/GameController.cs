@@ -16,17 +16,23 @@ namespace Controllers
         private Gameplay _gameplay;
         private GameMode _gameMode;
         private AudioService _audioService;
+        private RecordsService _recordsService;
+        private SceneSwitcher _sceneSwitcher;
 
         [Inject]
         public void Construct(
             CrossSceneContainer crossSceneContainer,
             Gameplay gameplay,
-            AudioService audioService
+            AudioService audioService,
+            RecordsService recordsService,
+            SceneSwitcher sceneSwitcher
         )
         {
             _gameplay = gameplay;
             _gameMode = crossSceneContainer.Pop<GameMode>();
             _audioService = audioService;
+            _recordsService = recordsService;
+            _sceneSwitcher = sceneSwitcher;
         }
 
         private void Awake()
@@ -79,6 +85,12 @@ namespace Controllers
             gameplayUIController.Reset();
         }
 
+        public void OnGameOverOkClick()
+        {
+            _sceneSwitcher.SwitchScene("Game Select Scene");
+            Time.timeScale = 1f;
+        }
+
         private void OnAnimationFinished(object sender, EventArgs e)
         {
             StartCoroutine(_gameplay.GameplayTask(_gameMode));
@@ -104,9 +116,14 @@ namespace Controllers
         private void GameplayOnGameOver(object sender, EventArgs e)
         {
             Time.timeScale = 0f;
-            gameplayUIController.ShowGameOver();
-            gameplayUIController.StopTimer();
+
+            var state = _gameplay.GameState;
+            var record = state.MakeRecord(_gameplay.GameMode.GameType);
+            var position = _recordsService.AddRecord(record);
             
+            gameplayUIController.ShowGameOver(record, position);
+            gameplayUIController.StopTimer();
+
             _gameplay.GameState.CorrectChanged -= OnGameStateCorrectChanged;
             _gameplay.GameState.IncorrectChanged -= OnGameStateIncorrectChanged;
             _gameplay.GameState.MissedChanged -= OnGameStateMissedChanged;
