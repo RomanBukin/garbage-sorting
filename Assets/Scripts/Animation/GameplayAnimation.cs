@@ -39,8 +39,11 @@ namespace Animation
 
             foreach (var type in tankTypes)
             {
-                tankTransitions[type].duration = 0.5f;
-                sequence.Append(tankTransitions[type].Move());
+                var tankTransition = tankTransitions[type];
+                
+                tankTransition.gameObject.SetActive(true);
+                tankTransition.duration = 0.5f;
+                sequence.Append(tankTransition.Move());
             }
 
             sequence.onComplete = OnAnimationFinished;
@@ -49,8 +52,11 @@ namespace Animation
 
         public void ShowTank(int type)
         {
-            tankTransitions[type].duration = 1f;
-            tankTransitions[type].Move();
+            var tankTransition = tankTransitions[type];
+            
+            tankTransition.gameObject.SetActive(true);
+            tankTransition.duration = 1f;
+            tankTransition.Move();
         }
 
         private void OnAnimationFinished()

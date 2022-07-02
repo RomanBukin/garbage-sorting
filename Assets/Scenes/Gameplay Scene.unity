@@ -1509,6 +1509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectorRed
       objectReference: {fileID: 0}
+    - target: {fileID: 1523879729216272816, guid: 825eced0df770b740ad74d2c116f5dbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1523879729216272829, guid: 825eced0df770b740ad74d2c116f5dbd, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2417,6 +2421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectorYellow
       objectReference: {fileID: 0}
+    - target: {fileID: 1523879729216272816, guid: a4c64b95ffda9de4db23f385638678d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1523879729216272829, guid: a4c64b95ffda9de4db23f385638678d2, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2692,6 +2700,10 @@ PrefabInstance:
     - target: {fileID: 1523879729216272816, guid: b104e9402cca21843aeb79cf0f28d8e3, type: 3}
       propertyPath: m_Name
       value: CollectorGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523879729216272816, guid: b104e9402cca21843aeb79cf0f28d8e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1523879729216272829, guid: b104e9402cca21843aeb79cf0f28d8e3, type: 3}
       propertyPath: m_RootOrder
@@ -3690,6 +3702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectorBlack
       objectReference: {fileID: 0}
+    - target: {fileID: 1523879729216272816, guid: 5f5eee517e608804c95b107e2c9542d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1523879729216272829, guid: 5f5eee517e608804c95b107e2c9542d6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3897,7 +3913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 760105450}
-  difficulty: 6
+  difficulty: 0
 --- !u!1 &1217104695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4016,6 +4032,10 @@ PrefabInstance:
     - target: {fileID: 1523879729216272816, guid: b576aa083dd0a71458f29071947d545b, type: 3}
       propertyPath: m_Name
       value: CollectorOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523879729216272816, guid: b576aa083dd0a71458f29071947d545b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1523879729216272829, guid: b576aa083dd0a71458f29071947d545b, type: 3}
       propertyPath: m_RootOrder
@@ -4253,6 +4273,10 @@ PrefabInstance:
     - target: {fileID: 1523879729216272816, guid: 53c906a06ef1be5448eec4e6b7e1737f, type: 3}
       propertyPath: m_Name
       value: CollectorBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523879729216272816, guid: 53c906a06ef1be5448eec4e6b7e1737f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1523879729216272829, guid: 53c906a06ef1be5448eec4e6b7e1737f, type: 3}
       propertyPath: m_RootOrder
