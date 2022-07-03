@@ -22,5 +22,13 @@ MonoBehaviour:
     m_Localized: Garbage Sorting
     m_Metadata:
       m_Items: []
+  - m_Id: 56210811312902144
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56210928518533120
+    m_Localized: Records
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

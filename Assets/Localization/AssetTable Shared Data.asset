@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: Menu Scene/Menu Icons/Canvas/Title
     m_Metadata:
       m_Items: []
+  - m_Id: 55789322403024896
+    m_Key: Menu Scene/Menu Icons/Canvas/Title 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - id: 0
@@ -39,6 +43,10 @@ MonoBehaviour:
           - en
           - ru
         - m_KeyId: 45617384275808256
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 55789322403024896
           m_TableCodes:
           - en
           - ru

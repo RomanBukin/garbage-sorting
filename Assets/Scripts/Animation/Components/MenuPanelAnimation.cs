@@ -53,7 +53,8 @@ namespace Animation
             _sequence = DOTween.Sequence();
             _sequence
                 .Append(_rectTransform.DOAnchorMin(minTo, duration))
-                .Join(_rectTransform.DOAnchorMax(maxTo, duration));
+                .Join(_rectTransform.DOAnchorMax(maxTo, duration))
+                .PlayForward();
             
             transform.SetAsLastSibling();
             _canvasGroup.DOFade(1f, duration);
@@ -64,7 +65,8 @@ namespace Animation
             _sequence = DOTween.Sequence();
             _sequence
                 .Append(_rectTransform.DOAnchorMin(_startMin, duration))
-                .Join(_rectTransform.DOAnchorMax(_startMax, duration));
+                .Join(_rectTransform.DOAnchorMax(_startMax, duration))
+                .PlayForward();
             
             transform.SetAsFirstSibling();
             _canvasGroup.DOFade(0f, duration);

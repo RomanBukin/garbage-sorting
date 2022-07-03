@@ -19,6 +19,14 @@ MonoBehaviour:
     m_Key: Title
     m_Metadata:
       m_Items: []
+  - m_Id: 56210811312902144
+    m_Key: Menu Scene/Menu Icons/Canvas/Panel Canvas Group/Panel/Tiltle/Text Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56210928518533120
+    m_Key: Menu Scene/Menu Icons/Canvas/Panel Canvas Group/Panel/Tiltle/Text Records
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

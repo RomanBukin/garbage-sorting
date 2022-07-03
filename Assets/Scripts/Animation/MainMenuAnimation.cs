@@ -1,7 +1,7 @@
-using Animation;
+using Animation.Components;
 using UnityEngine;
 
-namespace Services
+namespace Animation
 {
     public class MainMenuAnimation : MonoBehaviour
     {
@@ -20,6 +20,9 @@ namespace Services
         public CornerIconAnimation recordsIcon;
         public CornerIconAnimation quitIcon;
         public MenuPanelAnimation menuPanel;
+
+        [SerializeField] private GameObject[] creditsVisibleElements; 
+        [SerializeField] private GameObject[] recordsVisibleElements; 
 
         private State _state = State.Hidden;
 
@@ -75,6 +78,16 @@ namespace Services
                 return;
             }
             _state = State.Credits;
+
+            foreach (var element in creditsVisibleElements)
+            {
+                element.SetActive(true);
+            }
+            
+            foreach (var element in recordsVisibleElements)
+            {
+                element.SetActive(false);
+            }
             
             creditsIcon.MoveToCenter(() =>
             {
@@ -98,6 +111,16 @@ namespace Services
                 return;
             }
             _state = State.Records;
+
+            foreach (var element in creditsVisibleElements)
+            {
+                element.SetActive(false);
+            }
+            
+            foreach (var element in recordsVisibleElements)
+            {
+                element.SetActive(true);
+            }
             
             print("SelectRecords");
             recordsIcon.MoveToCenter(() =>
