@@ -106,6 +106,8 @@ namespace Controllers
 
         private void GameplayOnGameStarted(object sender, EventArgs e)
         {
+            _audioService.PlayRandomGameplayMusic();
+            
             _gameplay.GameState.CorrectChanged += OnGameStateCorrectChanged;
             _gameplay.GameState.IncorrectChanged += OnGameStateIncorrectChanged;
             _gameplay.GameState.MissedChanged += OnGameStateMissedChanged;
@@ -115,6 +117,8 @@ namespace Controllers
 
         private void GameplayOnGameOver(object sender, EventArgs e)
         {
+            _audioService.PlayMenuMusic();
+            
             Time.timeScale = 0f;
 
             var state = _gameplay.GameState;

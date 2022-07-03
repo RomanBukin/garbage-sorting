@@ -24,6 +24,12 @@ namespace Services
                 PlayMusicAudioClip(gameplayMusic[index]);
             }
         }
+        
+        public void PlayRandomGameplayMusic()
+        {
+            var index = Random.Range(0, gameplayMusic.Length); 
+            PlayMusicAudioClip(gameplayMusic[index]);
+        }
 
         private void PlayMusicAudioClip(AudioClip clip)
         {
