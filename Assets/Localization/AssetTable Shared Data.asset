@@ -15,14 +15,6 @@ MonoBehaviour:
   m_TableCollectionName: AssetTable
   m_TableCollectionNameGuidString: ce7784bd2c787264c956859bf0aecbca
   m_Entries:
-  - m_Id: 702576824320
-    m_Key: Menu Scene/Canvas/Title
-    m_Metadata:
-      m_Items: []
-  - m_Id: 45617384275808256
-    m_Key: Menu Scene/Menu Icons/Canvas/Title
-    m_Metadata:
-      m_Items: []
   - m_Id: 55789322403024896
     m_Key: Menu Scene/Menu Icons/Canvas/Title 1
     m_Metadata:
@@ -38,14 +30,6 @@ MonoBehaviour:
       type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries:
-        - m_KeyId: 702576824320
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 45617384275808256
-          m_TableCodes:
-          - en
-          - ru
         - m_KeyId: 55789322403024896
           m_TableCodes:
           - en

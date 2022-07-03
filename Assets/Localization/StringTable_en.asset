@@ -42,5 +42,45 @@ MonoBehaviour:
     m_Localized: LET'S SORT
     m_Metadata:
       m_Items: []
+  - m_Id: 56314031108493312
+    m_Localized: Classic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314072728571904
+    m_Localized: First Miss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314120522665984
+    m_Localized: Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314147915665408
+    m_Localized: Correct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314177355485184
+    m_Localized: Incorect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314200935862272
+    m_Localized: Missed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314219298525184
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314251498196992
+    m_Localized: Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314288324186112
+    m_Localized: Correct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56314309220208640
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
