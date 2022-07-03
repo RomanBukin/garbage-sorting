@@ -22,6 +22,7 @@ namespace Animation.Components
                     .Join(Graphic.DOColor(Graphic.color, pulseDuration))
                     .SetEase(Ease.InOutSine)
                     .SetLoops(-1, LoopType.Restart);
+                _sequence.PlayForward();
             }
             else
             {
