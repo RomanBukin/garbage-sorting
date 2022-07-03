@@ -30,5 +30,17 @@ MonoBehaviour:
     m_Localized: Records
     m_Metadata:
       m_Items: []
+  - m_Id: 56216170396094464
+    m_Localized: Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56216557119311872
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56216580540305408
+    m_Localized: LET'S SORT
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

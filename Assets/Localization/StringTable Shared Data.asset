@@ -27,6 +27,18 @@ MonoBehaviour:
     m_Key: Menu Scene/Menu Icons/Canvas/Panel Canvas Group/Panel/Tiltle/Text Records
     m_Metadata:
       m_Items: []
+  - m_Id: 56216170396094464
+    m_Key: Game Select Scene/Menu Canvas/Panel/Tiltle/Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56216557119311872
+    m_Key: Game Select Scene/Menu Canvas/Panel/Bottom/Button Back/Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56216580540305408
+    m_Key: Game Select Scene/Menu Canvas/Panel/Bottom/Button Start/Text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
