@@ -25,6 +25,12 @@ MonoBehaviour:
     m_Address: Assets/Localization/AssetTable Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 8f586378b4e144a9851e7b34d9b748ee
+    m_Address: LiberationSans SDF
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-ru
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ac85fcfc573c8fd41b89d7d1fb42963b, type: 2}
   m_SchemaSet:

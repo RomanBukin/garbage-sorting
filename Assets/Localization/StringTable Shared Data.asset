@@ -89,6 +89,38 @@ MonoBehaviour:
       Right/Row Title/Text Time
     m_Metadata:
       m_Items: []
+  - m_Id: 56359449485873152
+    m_Key: Gameplay Scene/UI/Missed Message Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359617098649600
+    m_Key: Gameplay Scene/UI/Incorrect Message Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359763127537664
+    m_Key: Gameplay Scene/UI/GameOver Canvas/Panel/Tiltle/Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359900520353792
+    m_Key: Gameplay Scene/UI/GameOver Canvas/Panel/Place/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359940492070912
+    m_Key: Gameplay Scene/UI/GameOver Canvas/Panel/Content/Row Time/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359961241292800
+    m_Key: Gameplay Scene/UI/GameOver Canvas/Panel/Content/Row Correct/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359982632243200
+    m_Key: Gameplay Scene/UI/GameOver Canvas/Panel/Content/Row Incorrect/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56360015528169472
+    m_Key: Gameplay Scene/UI/GameOver Canvas/Panel/Content/Row Missed/Label
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

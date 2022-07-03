@@ -82,5 +82,37 @@ MonoBehaviour:
     m_Localized: Time
     m_Metadata:
       m_Items: []
+  - m_Id: 56359449485873152
+    m_Localized: Missed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359617098649600
+    m_Localized: Incorrect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359763127537664
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359900520353792
+    m_Localized: Place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359940492070912
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359961241292800
+    m_Localized: Correct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56359982632243200
+    m_Localized: Incorrect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56360015528169472
+    m_Localized: Missed
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

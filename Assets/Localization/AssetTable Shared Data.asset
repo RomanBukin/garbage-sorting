@@ -19,11 +19,21 @@ MonoBehaviour:
     m_Key: Menu Scene/Menu Icons/Canvas/Title 1
     m_Metadata:
       m_Items: []
+  - m_Id: 55936403998478336
+    m_Key: Gameplay Scene/UI/Missed Message Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55936404162056192
+    m_Key: Gameplay Scene/UI/Missed Message Text (TMP) 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - id: 0
+    - id: 1
+    - id: 2
   m_KeyGenerator:
-    id: 1
+    id: 3
   references:
     version: 1
     00000000:
@@ -37,6 +47,26 @@ MonoBehaviour:
         m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     00000001:
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 55936403998478336
+          m_TableCodes:
+          - en
+          - ru
+        m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+    00000002:
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 55936404162056192
+          m_TableCodes:
+          - en
+          - ru
+        m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    00000003:
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1643542078197
