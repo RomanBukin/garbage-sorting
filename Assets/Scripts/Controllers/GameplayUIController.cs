@@ -16,8 +16,7 @@ namespace Controllers
         [SerializeField] private TextMeshProUGUI correctCountText;
         [SerializeField] private TextMeshProUGUI incorrectCountText;
         [SerializeField] private TextMeshProUGUI missedCountText;
-        
-        [SerializeField] private GameObject correctMessage;
+
         [SerializeField] private GameObject incorrectMessage;
         [SerializeField] private GameObject missedMessage;
 
@@ -47,7 +46,6 @@ namespace Controllers
             incorrectCountText.text = "0";
             missedCountText.text = "0";
 
-            correctMessage.SetActive(false);
             incorrectMessage.SetActive(false);
             missedMessage.SetActive(false);
             gameOverPanel.SetActive(false);
@@ -95,11 +93,6 @@ namespace Controllers
         {
             missedCountText.text = value.ToString();
             missedIconFlash.Play();
-        }
-
-        public void ShowCorrect()
-        {
-            StartCoroutine(ShowMessageTask(correctMessage));
         }
 
         public void ShowIncorrect()

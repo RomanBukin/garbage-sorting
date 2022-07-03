@@ -137,7 +137,6 @@ namespace Controllers
         private void OnGameStateCorrectChanged(object sender, int value)
         {
             gameplayUIController.SetCorrectCount(value);
-            gameplayUIController.ShowCorrect();
         }
 
         private void OnGameStateIncorrectChanged(object sender, int value)
