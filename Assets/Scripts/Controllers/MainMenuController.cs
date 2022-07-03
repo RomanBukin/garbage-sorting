@@ -1,5 +1,9 @@
+using System.Collections.Generic;
 using Animation;
+using Game;
+using Preferences;
 using Services;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -14,6 +18,9 @@ namespace Controllers
         public Button creditsButton;
         public Button quitButton;
         public Button closePopupButton;
+
+        [SerializeField] private RecordItem[] recordItemsLeft;
+        [SerializeField] private RecordItem[] recordItemsRight;
 
         private AudioService _audioService;
         private SettingsService _settingsService;
@@ -41,6 +48,8 @@ namespace Controllers
         private void Start()
         {
             soundToggleButton.isOn = _settingsService.SoundEnabled;
+            
+            LoadAllRecords();
             
             playButton.onClick.AddListener(OnClickPlayButton);
             soundToggleButton.onValueChanged.AddListener(OnChangedSoundToggle);
@@ -108,6 +117,30 @@ namespace Controllers
             if (e.TargetValue == 0f)
             {
                 _animation.ShowIcons();
+            }
+        }
+
+        private void LoadAllRecords()
+        {
+            LoadRecords(GameType.Classic);
+            LoadRecords(GameType.FirstMiss);
+        }
+
+        private void LoadRecords(GameType type)
+        {
+            List<Record> records = _recordsService.GetRecords(type);
+            RecordItem[] recordItems = type == GameType.Classic ? recordItemsLeft : recordItemsRight;
+            
+            for (int i = 0; i < recordItems.Length; i++)
+            {
+                var isVisible = records.Count > i;
+                recordItems[i].gameObject.SetActive(isVisible);
+
+                if (isVisible)
+                {
+                    var record = records[i];
+                    recordItems[i].SetValues(record.correct, record.incorrect, record.missed, record.time);
+                }
             }
         }
     }
