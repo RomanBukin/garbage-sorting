@@ -1,3 +1,4 @@
+using Components;
 using Game;
 using Services;
 using Unity.Services.Mediation;
@@ -9,11 +10,12 @@ namespace Controllers
 {
     public class GameSelectMenuController : MonoBehaviour
     {
+        [SerializeField] private bool locked;
+        
         [SerializeField] private Toggle[] toggles;
         [SerializeField] private Transform[] colorPanels;
         [SerializeField] private Transform[] tanks;
-        [SerializeField] private GameObject[] lockedImages;
-        [SerializeField] private GameObject[] unlockedImages;
+        [SerializeField] private LockItem[] lockItems;
 
         [SerializeField] private Button backButton;
         [SerializeField] private Button startButton;
@@ -24,7 +26,6 @@ namespace Controllers
         private GameMode _gameMode;
 
         private int _currentType;
-        private bool _locked;
         private int _difficultyRequest;
 
         [Inject]
@@ -48,8 +49,11 @@ namespace Controllers
 
         private void Start()
         {
-            SetLocked(true);
-            
+#if UNITY_WEBGL
+            locked = false;
+#endif
+            SetLocked(locked);
+
             _gameMode.SetDifficulty(0);
         }
 
@@ -101,7 +105,7 @@ namespace Controllers
 
             if (index >= 4)
             {
-                if (_locked)
+                if (locked)
                 {
                     _adService.ShowAd();
                     _difficultyRequest = index;
@@ -145,16 +149,11 @@ namespace Controllers
 
         private void SetLocked(bool value)
         {
-            _locked = value;
+            locked = value;
 
-            foreach (var image in lockedImages)
+            foreach (var item in lockItems)
             {
-                image.SetActive(value);
-            }
-
-            foreach (var image in unlockedImages)
-            {
-                image.SetActive(!value);
+                item.IsLocked = value;
             }
         }
     }
