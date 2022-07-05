@@ -16,6 +16,7 @@ namespace Controllers
         private Gameplay _gameplay;
         private GameMode _gameMode;
         private AudioService _audioService;
+        private SettingsService _settingsService;
         private RecordsService _recordsService;
         private SceneSwitcher _sceneSwitcher;
 
@@ -24,6 +25,7 @@ namespace Controllers
             CrossSceneContainer crossSceneContainer,
             Gameplay gameplay,
             AudioService audioService,
+            SettingsService settingsService,
             RecordsService recordsService,
             SceneSwitcher sceneSwitcher
         )
@@ -31,6 +33,7 @@ namespace Controllers
             _gameplay = gameplay;
             _gameMode = crossSceneContainer.Pop<GameMode>();
             _audioService = audioService;
+            _settingsService = settingsService;
             _recordsService = recordsService;
             _sceneSwitcher = sceneSwitcher;
         }
@@ -106,8 +109,11 @@ namespace Controllers
 
         private void GameplayOnGameStarted(object sender, EventArgs e)
         {
-            _audioService.PlayRandomGameplayMusic();
-            
+            if (_settingsService.SoundEnabled)
+            {
+                _audioService.PlayRandomGameplayMusic();
+            }
+
             _gameplay.GameState.CorrectChanged += OnGameStateCorrectChanged;
             _gameplay.GameState.IncorrectChanged += OnGameStateIncorrectChanged;
             _gameplay.GameState.MissedChanged += OnGameStateMissedChanged;
@@ -117,8 +123,11 @@ namespace Controllers
 
         private void GameplayOnGameOver(object sender, EventArgs e)
         {
-            _audioService.PlayMenuMusic();
-            
+            if (_settingsService.SoundEnabled)
+            {
+                _audioService.PlayMenuMusic();
+            }
+
             Time.timeScale = 0f;
 
             var state = _gameplay.GameState;
